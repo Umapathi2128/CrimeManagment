@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="register"
+            type="com.example.yugan.abc.ui.registration.RegistrationViewmModel" />
+    </data>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/crime_registration_background"
+        android:orientation="vertical"
+        tools:context="com.example.yugan.abc.ui.registration.RegistrationActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7fc9c43a" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/textView"
+            android:layout_marginBottom="@dimen/dp20"
+            android:gravity="center"
+            android:text="Registration"
+            android:textSize="@dimen/large" />
+
+        <LinearLayout
+            android:id="@+id/ll_userName"
+            style="@style/linear"
+            android:layout_below="@+id/txtTitle">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.name}" />
+
+            <EditText
+                android:id="@+id/extName"
+                style="@style/reg_etxt"
+                android:hint="@string/user_name"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_email"
+            style="@style/linear"
+            android:layout_below="@+id/ll_userName">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.email}" />
+
+            <EditText
+                android:id="@+id/etxtEmail"
+                style="@style/reg_etxt"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_dob"
+            style="@style/linear"
+            android:layout_below="@+id/ll_email"
+            android:layout_marginBottom="@dimen/dp15">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.dob}" />
+
+            <EditText
+                android:id="@+id/etxtDob"
+                style="@style/reg_etxt"
+                android:hint="dob"
+                android:inputType="date" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_gender"
+            style="@style/linear"
+
+            android:layout_below="@+id/ll_dob">
+
+            <RadioGroup
+                android:id="@+id/rgButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:text="@{register.registrationModel.gender}"
+                    android:textColor="#000"
+                    android:textSize="@dimen/subtitle" />
+
+                <RadioButton
+                    android:id="@+id/rbtnMale"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/rbtnFemale"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_mobile"
+            style="@style/linear"
+            android:layout_below="@+id/ll_gender">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.mobile}" />
+
+            <EditText
+                android:id="@+id/etxtMobile"
+                style="@style/reg_etxt"
+                android:hint="@string/mobile"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_address"
+            style="@style/linear"
+            android:layout_below="@+id/ll_mobile">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.address}" />
+
+            <EditText
+                android:id="@+id/etxtAddress"
+                style="@style/reg_etxt"
+                android:hint="Address"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_password"
+            style="@style/linear"
+            android:layout_below="@+id/ll_address">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.password}" />
+
+            <EditText
+                android:id="@+id/etxtPassword"
+                style="@style/reg_etxt"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtGenError"
+            android:layout_below="@+id/ll_password"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" android:text="hjgdhdjdfgdyydfyd"/>
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtGenError"
+            android:layout_marginLeft="@dimen/dp50"
+            android:layout_marginRight="@dimen/dp50"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/registration_btn_bck"
+            android:onClick="@{()->register.registration()}"
+            android:text="@{register.registrationModel.registration}" />
+        <TextView
+            style="@style/copyRights"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+</layout>

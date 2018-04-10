@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="login"
+            type="com.example.yugan.abc.ui.login.LoginViewModel" />
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_login"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg"
+        android:orientation="vertical"
+        tools:context="com.example.yugan.abc.ui.login.LoginActivity">
+
+        <ImageView
+            style="@style/loginImgView"
+            android:gravity="center"
+            android:src="@drawable/crime_login_logo"
+            android:textSize="@dimen/large" />
+        <!--<TextView-->
+        <!--style="@style/textView"-->
+        <!--android:text="Login"-->
+        <!--android:textSize="@dimen/large"-->
+        <!--android:gravity="center"/>e-->
+        <TextView
+            style="@style/textView"
+            android:text="@{login.loginModel.user}" />
+
+        <EditText
+            android:id="@+id/extUser"
+            style="@style/editTxt"
+            android:hint="Enter your name"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/textView"
+            android:text="@{login.loginModel.password}" />
+
+        <EditText
+            android:id="@+id/extPass"
+            style="@style/editTxt"
+            android:hint="Enter your password"
+            android:inputType="textPassword" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtForgetten"
+                style="@style/forgetten"
+                android:onClick="@{()->login.forgettenPassword()}"
+                android:text="@string/forgetten_password" />
+
+            <TextView
+                android:id="@+id/txtNewUser"
+                style="@style/forgetten"
+                android:onClick="@{()->login.newUser()}"
+                android:text="@string/new_user" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp10"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReset"
+                style="@style/buttonLogin"
+                android:onClick="@{()->login.reset()}"
+                android:text="@{login.loginModel.reset}" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/buttonLogin"
+                android:layout_marginRight="@dimen/dp20"
+                android:onClick="@{()->login.login()}"
+                android:text="@{login.loginModel.login}" />
+        </LinearLayout>
+
+        <TextView style="@style/copyRights" />
+    </LinearLayout>
+</layout>

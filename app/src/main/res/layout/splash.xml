@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="abc"
+            type="com.example.yugan.abc.ui.splash.ViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg"
+        android:orientation="vertical"
+        tools:context="com.example.yugan.abc.ui.login.LoginActivity">
+
+        <ImageView
+            style="@style/loginImgView"
+            android:gravity="center"
+            android:src="@drawable/crime_login_logo"
+            android:textSize="@dimen/large" />
+
+        <Button
+            android:id="@+id/btnAdmin"
+            style="@style/btnSplash"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="@{abc.admin}"
+            android:onClick="@{()->abc.adminLogin()}"
+         />
+
+        <Button
+            android:id="@+id/btnUser"
+            style="@style/btnSplash"
+            android:text="@{abc.user}"
+            android:onClick="@{()->abc.userLogin()}"
+         />
+
+        <Button
+            android:id="@+id/btnPolice"
+            style="@style/btnSplash"
+            android:text="@{abc.police}"
+            android:onClick="@{()->abc.policeLogin()}"
+             />
+        <TextView
+            style="@style/copyRights"/>
+
+    </LinearLayout>
+</layout>

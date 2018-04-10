@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small">14sp</dimen>
+    <dimen name="normal">14sp</dimen>
+    <dimen name="subtitle">16sp</dimen>
+    <dimen name="title">20sp</dimen>
+    <dimen name="large">24sp</dimen>
+    <dimen name="xlarge">34sp</dimen>
+
+    <dimen name="dp10">10sp</dimen>
+    <dimen name="dp15">15sp</dimen>
+    <dimen name="dp20">20sp</dimen>
+    <dimen name="dp25">25sp</dimen>
+    <dimen name="dp30">30sp</dimen>
+    <dimen name="dp40">40sp</dimen>
+    <dimen name="dp50">50sp</dimen>
+    <dimen name="dp100">100sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+</resources>
