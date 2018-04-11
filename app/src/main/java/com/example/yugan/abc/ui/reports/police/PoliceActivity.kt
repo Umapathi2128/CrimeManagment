@@ -1,4 +1,4 @@
-package com.example.yugan.abc.ui.reports
+package com.example.yugan.abc.ui.reports.police
 
 import android.support.design.widget.TabLayout
 import android.support.design.widget.Snackbar
@@ -16,10 +16,10 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.yugan.abc.R
-import kotlinx.android.synthetic.main.activity_reports.*
-import kotlinx.android.synthetic.main.fragment_reports.view.*
+import kotlinx.android.synthetic.main.activity_police.*
+import kotlinx.android.synthetic.main.fragment_police.view.*
 
-class ReportsActivity : AppCompatActivity() {
+class PoliceActivity : AppCompatActivity() {
 
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
@@ -33,7 +33,7 @@ class ReportsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reports)
+        setContentView(R.layout.activity_police)
 
         setSupportActionBar(toolbar)
         // Create the adapter that will return a fragment for each of the three
@@ -56,7 +56,7 @@ class ReportsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_reports, menu)
+        menuInflater.inflate(R.menu.menu_police, menu)
         return true
     }
 
@@ -99,7 +99,7 @@ class ReportsActivity : AppCompatActivity() {
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
-            val rootView = inflater.inflate(R.layout.fragment_reports, container, false)
+            val rootView = inflater.inflate(R.layout.fragment_police, container, false)
             rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
             return rootView
         }

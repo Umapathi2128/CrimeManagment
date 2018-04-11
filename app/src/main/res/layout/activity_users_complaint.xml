@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="complaint"
+            type="com.example.yugan.abc.ui.reports.user.UserViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            style="@style/complaint_button"
+            android:layout_marginTop="80dp"
+            android:onClick="@{()->complaint.fileComplaint()}" />
+
+        <Button
+            style="@style/complaint_button"
+            android:onClick="@{()->complaint.checkStatus()}" />
+
+        <Button
+            style="@style/complaint_button"
+            android:onClick="@{()->complaint.ratePolice()}" />
+
+        <Button
+            style="@style/complaint_button"
+            android:onClick="@{()->complaint.complaintAgainstPolice()}" />
+
+        <Button
+            style="@style/complaint_button"
+            android:onClick="@{()->complaint.logout()}" />
+
+    </LinearLayout>
+</layout>

@@ -7,6 +7,7 @@
     <dimen name="large">24sp</dimen>
     <dimen name="xlarge">34sp</dimen>
 
+    <dimen name="dp5">5sp</dimen>
     <dimen name="dp10">10sp</dimen>
     <dimen name="dp15">15sp</dimen>
     <dimen name="dp20">20sp</dimen>

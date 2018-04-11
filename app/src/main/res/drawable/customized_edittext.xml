@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:height="@dimen/dp40" android:width="@dimen/dp50">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle"
+            >
+            <solid android:color="#514949"/>
+            <corners android:bottomLeftRadius="@dimen/dp5" android:topLeftRadius="@dimen/dp5"/>
+        </shape>
+    </item>
+    <item
+        android:height="@dimen/dp30"
+        android:width="@dimen/dp30"
+        android:gravity="center"
+        android:drawable="@drawable/ic_person" />
+</layer-list>

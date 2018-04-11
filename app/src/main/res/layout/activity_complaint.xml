@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="fileComplaint"
+            type="com.example.yugan.abc.ui.reports.user.complaint.ComplaintViewModel"/>
+    </data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.reports.user.complaint.ComplaintActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_name"
+        android:drawableLeft="@drawable/customized_edittext"
+        android:layout_margin="@dimen/dp30"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:inputType="text"
+        android:hint="Enter your name"
+        android:drawablePadding="@dimen/dp10"/>
+
+</LinearLayout>
+</layout>
