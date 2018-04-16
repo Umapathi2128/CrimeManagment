@@ -6,4 +6,6 @@ class ForgettenViewModel(private var forgettenView: ForgettenView, var forgetten
     {
         if(forgettenView.isValidEmail()) forgettenView.isClick()
     }
+
+
 }

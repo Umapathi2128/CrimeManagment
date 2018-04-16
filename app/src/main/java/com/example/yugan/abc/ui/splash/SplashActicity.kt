@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import com.example.yugan.abc.BR
 import com.example.yugan.abc.R
 import com.example.yugan.abc.databinding.SplashBinding
+import com.example.yugan.abc.repository.preference.CrimePreferenceHelper
 import com.example.yugan.abc.ui.login.LoginActivity
 
 class SplashActicity : AppCompatActivity(), SplashView {
@@ -52,15 +53,13 @@ class SplashActicity : AppCompatActivity(), SplashView {
             override fun onAnimationEnd(arg0: Animation) {
                 when (position) {
                     1 ->{
-                        val intent1=Intent(context, LoginActivity::class.java)
-                        intent1.putExtra("type",1)
-                        startActivity(intent1)
+                        CrimePreferenceHelper().putString(context,"type","Admin")
+                        startActivity(Intent(context,LoginActivity::class.java))
                     }
 
                     3 -> {
-                        val intent3=Intent(context, LoginActivity::class.java)
-                        intent3.putExtra("type",3)
-                        startActivity(intent3)
+                       CrimePreferenceHelper().putString(context,"type","Police")
+                        startActivity(Intent(context,LoginActivity::class.java))
                     }
 
                     else -> return
@@ -74,9 +73,8 @@ class SplashActicity : AppCompatActivity(), SplashView {
             override fun onAnimationEnd(arg0: Animation) {
                 when (position) {
                     2 -> {
-                        val intent2=Intent(context, LoginActivity::class.java)
-                        intent2.putExtra("type",2)
-                        startActivity(intent2)
+                        CrimePreferenceHelper().putString(context,"type","User")
+                        startActivity(Intent(context,LoginActivity::class.java))
                     }
                     else -> return
 

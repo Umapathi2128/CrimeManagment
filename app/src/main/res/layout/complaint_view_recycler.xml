@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="recycler"
+            type="com.example.yugan.abc.ui.reports.user.complaint.complaintView.ComplaintViewViewModel"/>
+    </data>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_marginBottom="@dimen/dp10"
+    app:cardElevation="@dimen/dp10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp10">
+
+            <TextView
+                style="@style/txtCustomRecyclerComplaint"
+                android:text="Criminal" />
+
+            <TextView
+                android:id="@+id/txtCriminal"
+                style="@style/txtResCustomRecyclerComplaint" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp10">
+
+            <TextView
+                style="@style/txtCustomRecyclerComplaint"
+                android:text="Police" />
+
+            <TextView
+                android:id="@+id/txtPolice"
+                style="@style/txtResCustomRecyclerComplaint" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp10">
+
+            <TextView
+                style="@style/txtCustomRecyclerComplaint"
+                android:text="status" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                style="@style/txtResCustomRecyclerComplaint" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp10">
+
+            <TextView
+                style="@style/txtCustomRecyclerComplaint"
+                android:text="Ratting" />
+
+            <TextView
+                android:id="@+id/txtRatting"
+                style="@style/txtResCustomRecyclerComplaint" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/txtCustomRecyclerComplaint"
+                android:text="Complaint" />
+
+            <TextView
+                android:id="@+id/txtComplaint"
+                style="@style/txtResCustomRecyclerComplaint" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+</layout>

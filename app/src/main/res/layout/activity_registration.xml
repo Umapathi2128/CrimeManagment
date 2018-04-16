@@ -14,27 +14,48 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/crime_registration_background"
         android:orientation="vertical"
         tools:context="com.example.yugan.abc.ui.registration.RegistrationActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#7fc9c43a" />
+            android:background="@drawable/images " />
 
-        <TextView
-            android:id="@+id/txtTitle"
-            style="@style/textView"
-            android:layout_marginBottom="@dimen/dp20"
-            android:gravity="center"
-            android:text="Registration"
-            android:textSize="@dimen/large" />
+        <ImageView
+            android:id="@+id/imgTitle"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/registr"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"/>
+        <!--<TextView-->
+            <!--android:id="@+id/txtTitle"-->
+            <!--style="@style/textView"-->
+            <!--android:layout_marginBottom="@dimen/dp20"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Registration"-->
+            <!--android:textSize="@dimen/large" />-->
+        <LinearLayout
+            android:id="@+id/ll_adhaar"
+            style="@style/linear"
+            android:layout_below="@+id/imgTitle">
+
+            <TextView
+                style="@style/reg_txtview"
+                android:text="@{register.registrationModel.adhaar}" />
+
+            <EditText
+                android:id="@+id/etxtAdhaar"
+                style="@style/reg_etxt"
+                android:hint="@string/password"
+                android:inputType="number" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_userName"
             style="@style/linear"
-            android:layout_below="@+id/txtTitle">
+            android:layout_below="@+id/ll_adhaar">
 
             <TextView
                 style="@style/reg_txtview"
@@ -97,7 +118,6 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
                     android:layout_weight="1"
                     android:text="@{register.registrationModel.gender}"
                     android:textColor="#000"
@@ -153,35 +173,22 @@
                 android:inputType="text" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_password"
-            style="@style/linear"
-            android:layout_below="@+id/ll_address">
 
-            <TextView
-                style="@style/reg_txtview"
-                android:text="@{register.registrationModel.password}" />
-
-            <EditText
-                android:id="@+id/etxtPassword"
-                style="@style/reg_etxt"
-                android:hint="@string/password"
-                android:inputType="textPassword" />
-        </LinearLayout>
         <TextView
             android:id="@+id/txtGenError"
-            android:layout_below="@+id/ll_password"
+            android:layout_below="@+id/ll_address"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/red"
             android:visibility="gone"
             android:textStyle="bold"
-            android:layout_height="wrap_content" android:text="hjgdhdjdfgdyydfyd"/>
+           />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp30"
             android:layout_below="@+id/txtGenError"
             android:layout_marginLeft="@dimen/dp50"
             android:layout_marginRight="@dimen/dp50"

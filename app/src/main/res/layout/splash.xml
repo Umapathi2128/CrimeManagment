@@ -20,7 +20,7 @@
         <ImageView
             style="@style/loginImgView"
             android:gravity="center"
-            android:src="@drawable/crime_login_logo"
+            android:src="@drawable/complaint1"
             android:textSize="@dimen/large" />
 
         <Button

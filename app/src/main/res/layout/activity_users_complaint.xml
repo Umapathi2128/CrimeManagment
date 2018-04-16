@@ -11,28 +11,48 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/images">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/complaintfin"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp10"/>
 
         <Button
+            android:id="@+id/complaint"
             style="@style/complaint_button"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="@dimen/dp20"
+            android:text="@string/fileYourComplaint"
             android:onClick="@{()->complaint.fileComplaint()}" />
 
         <Button
+            android:id="@+id/status"
             style="@style/complaint_button"
+            android:text="@string/status"
             android:onClick="@{()->complaint.checkStatus()}" />
 
         <Button
+            android:id="@+id/againstPolice"
             style="@style/complaint_button"
-            android:onClick="@{()->complaint.ratePolice()}" />
-
-        <Button
-            style="@style/complaint_button"
+            android:text="@string/againstPolice"
             android:onClick="@{()->complaint.complaintAgainstPolice()}" />
 
         <Button
+            android:id="@+id/ratting"
             style="@style/complaint_button"
+            android:text="@string/ratting"
+            android:onClick="@{()->complaint.ratePolice()}" />
+
+        <Button
+            android:id="@+id/logout"
+            style="@style/complaint_button"
+            android:text="@string/logout"
             android:onClick="@{()->complaint.logout()}" />
+        <TextView
+            style="@style/copyRights"/>
 
     </LinearLayout>
 </layout>

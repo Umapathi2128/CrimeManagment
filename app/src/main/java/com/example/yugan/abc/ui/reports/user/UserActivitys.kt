@@ -1,6 +1,7 @@
 package com.example.yugan.abc.ui.reports.user
 
 import android.content.Context
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -10,9 +11,13 @@ import com.example.yugan.abc.BR
 import com.example.yugan.abc.R
 import com.example.yugan.abc.ToastClass
 import com.example.yugan.abc.databinding.ActivityUsersComplaintBinding
+import com.example.yugan.abc.repository.preference.CrimePreferenceHelper
 import com.example.yugan.abc.ui.reports.user.UserDataModel
 import com.example.yugan.abc.ui.reports.user.UserView
 import com.example.yugan.abc.ui.reports.user.UserViewModel
+import com.example.yugan.abc.ui.reports.user.complaint.ComplaintActivity
+import com.example.yugan.abc.ui.reports.user.complaint.complaintView.ComplaintRattingActivity
+import com.example.yugan.abc.ui.splash.SplashActicity
 
 class UserActivitys :AppCompatActivity(), UserView {
 
@@ -41,11 +46,11 @@ class UserActivitys :AppCompatActivity(), UserView {
     }
 
     override fun logout() {
-        animation(4,this)
+        animation(5,this)
     }
 
     override fun complaintAgainstPolice() {
-        animation(5,this)
+        animation(4,this)
     }
 
     /**
@@ -63,12 +68,13 @@ class UserActivitys :AppCompatActivity(), UserView {
             override fun onAnimationEnd(arg0: Animation) {
                 when (position) {
                     1 ->{
-                        ToastClass().show(context,"clicked file a complaint")
+                        startActivity(Intent(context,ComplaintActivity::class.java))
                     }
 
-                    3 -> {ToastClass().show(context,"clicked rate police")}
+                    3 -> {startActivity(Intent(context,ComplaintRattingActivity::class.java))}
 
-                    5->{ToastClass().show(context,"clicked police")}
+                    5->{startActivity(Intent(context,SplashActicity::class.java))
+                        finish()}
                     else -> return
 
                 }
@@ -81,11 +87,17 @@ class UserActivitys :AppCompatActivity(), UserView {
                 when (position) {
                     2 -> {ToastClass().show(context,"clicked status")
                     }
-                    4->{ToastClass().show(context,"clicked logout")}
+                    4->{ToastClass().show(context,"Rate against police...")
+                        }
                     else -> return
 
                 }
             }
         })
+        activityUsersComplaintBinding.againstPolice.startAnimation(animation)
+        activityUsersComplaintBinding.complaint.startAnimation(animation)
+        activityUsersComplaintBinding.logout.startAnimation(animation)
+        activityUsersComplaintBinding.status.startAnimation(animations)
+        activityUsersComplaintBinding.ratting.startAnimation(animations)
     }
 }

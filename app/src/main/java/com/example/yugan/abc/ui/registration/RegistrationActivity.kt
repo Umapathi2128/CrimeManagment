@@ -16,11 +16,15 @@ import com.example.yugan.abc.repository.room.registrtion.UserDataModel
 import java.util.*
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import javax.mail.*
 import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.view.View
 import com.example.yugan.abc.SnackBarClass
+import com.example.yugan.abc.ValidateAdhaarNumber
+import com.example.yugan.abc.repository.preference.CrimePreferenceHelper
+import com.example.yugan.abc.ui.login.LoginActivity
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
@@ -31,19 +35,20 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
      private lateinit var activityRegistrationBinding: ActivityRegistrationBinding
     private lateinit var progressDailouge:ProgressDialog
     var text :String=""
+    private var pass=""
     private var isAvailabe=false
     private lateinit var value:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      value =intent.extras.getString("type")
+      value =CrimePreferenceHelper().getString("type",this)
 
         activityRegistrationBinding = DataBindingUtil.setContentView(this, R.layout.activity_registration)
 
         val registationViewModel= RegistrationViewmModel(this,
                 RegistrationModel("User Name", "Email", "Dob", "Gender", "Mobile"
-                        , "Address", "Password", "Registration"))
+                        , "Address", "UID number", "Registration"))
 
         activityRegistrationBinding.setVariable(BR.register, registationViewModel)
     }
@@ -117,11 +122,11 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
     }
 
     override fun showPasswordError() {
-        activityRegistrationBinding.etxtPassword.error="Passowrd shouldn't be empty..."
+        activityRegistrationBinding.etxtAdhaar.error="Adhhar number shouldn't be empty..."
     }
 
     override fun isValidPassword(): Boolean {
-        return activityRegistrationBinding.etxtPassword.text.trim().toString()!=""
+        return activityRegistrationBinding.etxtAdhaar.text.trim().toString()!=""
     }
 
 
@@ -138,6 +143,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
             }
         }
         val txt="The Email is already exists..."
+//        if(ValidateAdhaarNumber.Verhoeff.validateVerhoeff(activityRegistrationBinding.))
         when {
 
             isAvailabe -> {
@@ -145,18 +151,26 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
                 activityRegistrationBinding.txtGenError.text=txt
             }
 
-            isNetworkCheck() -> {
-                database.userDao().insertAll(UserDataModel(activityRegistrationBinding.extName.text.toString()
-                        , activityRegistrationBinding.etxtEmail.text.toString()
-                        , activityRegistrationBinding.etxtDob.text.toString()
-                        , text
-                        , activityRegistrationBinding.etxtMobile.text.toString()
-                        , activityRegistrationBinding.etxtAddress.text.toString()
-                        , activityRegistrationBinding.etxtPassword.text.toString()
-                        , value))
+            isNetworkCheck() -> if(true)
+            {
+                pass=((Math.random()*10000).toInt()).toString()
+//                    ValidateAdhaarNumber.Verhoeff.validateVerhoeff(activityRegistrationBinding.etxtAdhaar.text.trim().toString())
+            database.userDao().insertAll(UserDataModel(activityRegistrationBinding.extName.text.toString()
+                    , activityRegistrationBinding.etxtEmail.text.toString()
+                    , activityRegistrationBinding.etxtDob.text.toString()
+                    , text
+                    , activityRegistrationBinding.etxtMobile.text.toString()
+                    , activityRegistrationBinding.etxtAddress.text.toString()
+                    , activityRegistrationBinding.etxtAdhaar.text.toString()
+                    , "1234"
+                    , value))
 
-//                startActivity(Intent(this, LoginActivity::class.java))
-                sendingMail()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            sendingMail()
+            }else {
+                activityRegistrationBinding.txtGenError.visibility= View.VISIBLE
+                activityRegistrationBinding.txtGenError.text="Enter valid Ahaar number.."
             }
             else -> SnackBarClass().snackShow(activityRegistrationBinding.btnRegister,"No Internet Connection..")
         }
@@ -168,14 +182,14 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
      *  Sending mail with using smtp...
      */
     private fun sendingMail() {
-        val userEmail="uma@gmail.com"
-        val password="password"
+        val userEmail="umapathir2@gmail.com"
+        val password="Nothing2586"
         val props = Properties()
         props["mail.smtp.host"] = "smtp.gmail.com"
         props["mail.smtp.socketFactory.port"] = "465"
         props["mail.smtp.socketFactory.class"] = "javax.net.ssl.SSLSocketFactory"
         props["mail.smtp.auth"] = "true"
-        props["mail.smtp.port"] = "587"
+        props["mail.smtp.port"] = "465"
 
         val session = Session.getInstance(props, object : javax.mail.Authenticator() {
             override fun getPasswordAuthentication(): javax.mail.PasswordAuthentication {
@@ -199,11 +213,13 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
         override fun doInBackground(vararg params: String): String? {
             val message = MimeMessage(session)
             try {
-                message.setFrom(InternetAddress("uma@gmail.com"))
+                message.setFrom(InternetAddress("umapathir2@gmail.com","uma"))
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmailAddress))
-                message.subject = "hii uma garu"
-//                message.setContent("hello uma", "text")
+                message.subject = "Password"
+                message.setContent("hello uma your password is:", "text")
                 Transport.send(message)
+
+
             } catch (e: MessagingException) {
                 e.printStackTrace()
             } catch (e: Exception) {

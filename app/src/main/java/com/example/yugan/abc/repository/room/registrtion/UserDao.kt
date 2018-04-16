@@ -4,7 +4,7 @@ import android.arch.persistence.room.*
 
 
 @Dao
-interface UserDao {
+interface  UserDao {
 
     @Query("SELECT * FROM userDataModel")
     fun  getAll():MutableList<UserDataModel>

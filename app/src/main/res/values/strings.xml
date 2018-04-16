@@ -11,9 +11,14 @@
     <string name="mobile">Mobile</string>
     <string name="address">Address</string>
     <string name="showNotMatchEmail">Email Not Matched…</string>
-    <string name="password">Password</string>
+    <string name="password">Uid Number</string>
     <string name="etxtEmailHint">Enter your Email</string>
     <string name="emailCheck">Check</string>
+    <string name="fileYourComplaint">File your Complaint</string>
+    <string name="ratting">Give your ratting</string>
+    <string name="status">Check your complaint status</string>
+    <string name="againstPolice">Complaint against police</string>
+    <string name="logout">Logout</string>
 
     <!-- copy rigths-->
     <string name="copy_right">Copyrights \u00a9 2018. Uma technologies.Inc</string>

@@ -12,13 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.splash.SplashActicity" />
+        <activity android:name=".ui.reports.user.complaint.ComplaintActivity" />
         <activity android:name=".ui.registration.RegistrationActivity" />
         <activity android:name=".ui.forgetten.ForgettenPasswordActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity
-            android:name=".ui.reports.user.UserActivitys"
-            android:label="@string/title_activity_reports">
+        <activity android:name=".ui.splash.SplashActicity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,9 +27,12 @@
             android:name=".ui.reports.police.PoliceActivity"
             android:label="@string/title_activity_police"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.reports.user.complaint.ComplaintActivity"
-            />
+        <activity android:name=".ui.reports.user.UserActivitys" />
+        <!-- <activity -->
+        <!-- android:name=".ui.reports.user.complaint.ComplaintActivity" -->
+        <!-- /> -->
+        <activity android:name=".ui.reports.user.complaint.complaintView.ComplaintRattingActivity" />
+        <activity android:name=".ui.reports.user.complaint.complaintView.GiveRattingActivity"></activity>
     </application>
 
 </manifest>

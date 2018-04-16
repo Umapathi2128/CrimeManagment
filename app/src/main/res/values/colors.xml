@@ -6,5 +6,6 @@
 
     <color name="blue">#250fc7</color>
     <color name="red">#ca0a0a</color>
-    <color name="yellow">#161616</color>
+    <color name="yellow">#f2e204</color>
+    <color name="hash">#7e6868</color>
 </resources>

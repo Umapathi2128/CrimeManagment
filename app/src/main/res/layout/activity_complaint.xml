@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable
-            name="fileComplaint"
+            name="uma"
             type="com.example.yugan.abc.ui.reports.user.complaint.ComplaintViewModel"/>
     </data>
 
@@ -12,18 +12,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/images"
     tools:context=".ui.reports.user.complaint.ComplaintActivity">
-    <EditText
+    <ImageView
+       style="@style/loginImgView"
+        android:src="@drawable/report_crime"
+        android:layout_marginBottom="@dimen/dp30"/>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/fileYourComplaint"-->
+        <!--android:textSize="@dimen/large"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:fontFamily="@font/roboto_regular"-->
+        <!--android:layout_marginTop="@dimen/dp10"-->
+        <!--android:layout_marginBottom="@dimen/dp20"-->
+        <!--android:textColor="#d7c8c8"/>-->
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_name"
-        android:drawableLeft="@drawable/customized_edittext"
-        android:layout_margin="@dimen/dp30"
-        android:maxLength="15"
-        android:maxLines="1"
+        android:text="Address:"
+        android:textSize="@dimen/subtitle"
+        android:textColor="#d7c8c8"
+
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp30"/>
+    <EditText
+        android:id="@+id/etxtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginRight="@dimen/dp30"
         android:inputType="text"
-        android:hint="Enter your name"
-        android:drawablePadding="@dimen/dp10"/>
+        android:hint="Enter crime address"
+        android:textSize="@dimen/subtitle"
+        android:gravity="start|center"
+        android:paddingLeft="@dimen/dp10"
+        android:background="@drawable/edittext_name"
+       />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="File Complaint:"
+        android:textSize="@dimen/subtitle"
+        android:textColor="#d7c8c8"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp30"/>
+    <EditText
+        android:id="@+id/etxtComplaint"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:maxLines="4"
+        android:maxLength="100"
+        android:background="@drawable/edittext_name"
+        android:gravity="top"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp30"
+        android:textSize="@dimen/subtitle"
+        android:layout_marginLeft="@dimen/dp30"
+        android:hint="Enter your complaint"/>
+    <TextView
+        android:id="@+id/showAllError"
+       style="@style/textView"
+        android:visibility="gone"
+        android:textColor="@color/red"
+        android:fontFamily="@font/roboto_regular"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:text="Click to file the Complaint"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginRight="@dimen/dp30"
+        android:onClick="@{()->uma.complaintFile()}"
+        android:background="@drawable/edittext_name"
+      />
+    <TextView
+        style="@style/copyRights" />
 
 </LinearLayout>
 </layout>

@@ -8,17 +8,18 @@ import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.Toast
 import com.example.yugan.abc.BR
 import com.example.yugan.abc.R
 import com.example.yugan.abc.SnackBarClass
 import com.example.yugan.abc.databinding.ActivityMainBinding
 import com.example.yugan.abc.repository.UserDetails
+import com.example.yugan.abc.repository.preference.CrimePreferenceHelper
 import com.example.yugan.abc.repository.room.registrtion.UserDataModel
 import com.example.yugan.abc.ui.forgetten.ForgettenPasswordActivity
 import com.example.yugan.abc.ui.registration.RegistrationActivity
+import com.example.yugan.abc.ui.reports.police.PoliceActivity
+import com.example.yugan.abc.ui.reports.user.UserActivitys
 
-@Suppress("UNREACHABLE_CODE")
 class LoginActivity : AppCompatActivity(), LoginView {
 
 
@@ -32,16 +33,12 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         activityMainBainding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        value = intent.extras.getInt("type").toString()
+        //  getting shared preference value...
+        value = CrimePreferenceHelper().getString("type", this)
 
-        val txt: String = when (value) {
-            "1" -> "Admin"
-            "2" -> "User"
-            "3" -> "Police"
-            else -> ""
-        }
+
         val loginViewModel = LoginViewModel(this,
-                LoginModel("$txt Name", "Password", "Reset", "Login"))
+                LoginModel("$value Name", "Password", "Reset", "Login"))
         activityMainBainding.setVariable(BR.login, loginViewModel)
     }
 
@@ -69,42 +66,69 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     /**
-     *  this methos for login..
+     *  this methos for getting details from room database and validate the fields and login..
      */
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun login() {
         arrList = UserDetails().getAll(this) as ArrayList<UserDataModel>
+
         if (arrList.isNotEmpty()) {
+
             for (i in 0 until arrList.size) {
                 activityMainBainding.txtLogin.visibility = View.GONE
 
                 if (activityMainBainding.extUser.text.trim().toString() == arrList[i].name
                         && activityMainBainding.extPass.text.trim().toString() == arrList[i].password
-                        && value == arrList[i].type)
+                        && value == arrList[i].type) {
+
+                    //setting current email to the shared preference....
+                    CrimePreferenceHelper().putString(this, "email", arrList[i].email)
+                    CrimePreferenceHelper().putString(this, "adhaar", arrList[i].adhaar)
                     isChecked = true
+
+                }
+
             }
             if (isChecked) {
                 isChecked = false
-                Toast.makeText(this, "succcess", Toast.LENGTH_LONG).show()
+                when (value) {
+                    "Admin" -> {
+                        startActivity(Intent(
+                                this,
+                                UserActivitys::class.java
+                        ))
+                        finish()
+                    }
+                    "Police" -> {
+                        startActivity(Intent(this, PoliceActivity::class.java))
+                        finish()
+                    }
+                    "User" -> {
+                        startActivity(Intent(this, UserActivitys::class.java))
+                        finish()
+                    }
+                }
+
             } else {
                 activityMainBainding.txtLogin.visibility = VISIBLE
                 val str = "Plaese Enter valid Details..."
                 activityMainBainding.txtLogin.text = str
             }
-        } else SnackBarClass().snackShow(activityMainBainding.btnLogin,"DataBase is Empty...")
+        } else SnackBarClass().snackShow(activityMainBainding.btnLogin, "DataBase is Empty...")
 
 
     }
 
-//
-
-
+    /**
+     *  This method for redirecting to the registration activity...
+     */
     override fun newUser() {
-        var intent = Intent(this, RegistrationActivity::class.java)
-        intent.putExtra("type", value)
-        startActivity(intent)
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 
+    /**
+     *  This method for redirecting to the forgetten password activity...
+     */
     override fun forgettenPassword() {
         startActivity(Intent(this, ForgettenPasswordActivity::class.java))
     }

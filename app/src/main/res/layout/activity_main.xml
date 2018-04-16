@@ -15,14 +15,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_bg"
+        android:background="@drawable/images"
         android:orientation="vertical"
         tools:context="com.example.yugan.abc.ui.login.LoginActivity">
 
         <ImageView
             style="@style/loginImgView"
             android:gravity="center"
-            android:src="@drawable/crime_login_logo"
+            android:src="@drawable/the_police"
             android:textSize="@dimen/large" />
         <!--<TextView-->
         <!--style="@style/textView"-->
