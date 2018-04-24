@@ -19,7 +19,7 @@ class CrimePreferenceHelper {
      */
     fun putString(context: Context,key:String,value:String)
     {
-        var editor=getPref(context).edit().putString(key,value).commit()
+        getPref(context).edit().putString(key,value).apply()
     }
 
     /**

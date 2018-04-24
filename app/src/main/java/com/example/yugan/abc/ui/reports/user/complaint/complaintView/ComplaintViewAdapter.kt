@@ -22,11 +22,16 @@ class ComplaintViewAdapter(private var list: ArrayList<ComplaintDataModel>, var 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-    recyclerBinding.txtComplaint.text=": "+list[position].complaint
-    recyclerBinding.txtCriminal.text=": "+list[position].accust
-    recyclerBinding.txtPolice.text=": "+list[position].policeName
-    recyclerBinding.txtRatting.text=": "+list[position].ratting
-    recyclerBinding.txtStatus.text= ": "+list[position].status
+        val complaint=": "+list[position].complaint
+        val criminal=": "+list[position].accust
+        val police=": "+list[position].policeName
+        val ratting=": "+list[position].ratting
+        val status=": "+list[position].status
+    recyclerBinding.txtComplaint.text=complaint
+    recyclerBinding.txtCriminal.text=criminal
+    recyclerBinding.txtPolice.text=police
+    recyclerBinding.txtRatting.text=ratting
+    recyclerBinding.txtStatus.text= status
     }
 
     override fun getItemCount(): Int {

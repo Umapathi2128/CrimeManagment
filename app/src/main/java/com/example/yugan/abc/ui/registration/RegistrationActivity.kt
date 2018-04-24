@@ -22,7 +22,6 @@ import android.net.ConnectivityManager
 import android.os.AsyncTask
 import android.view.View
 import com.example.yugan.abc.SnackBarClass
-import com.example.yugan.abc.ValidateAdhaarNumber
 import com.example.yugan.abc.repository.preference.CrimePreferenceHelper
 import com.example.yugan.abc.ui.login.LoginActivity
 import javax.mail.internet.InternetAddress
@@ -170,13 +169,12 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
             sendingMail()
             }else {
                 activityRegistrationBinding.txtGenError.visibility= View.VISIBLE
-                activityRegistrationBinding.txtGenError.text="Enter valid Ahaar number.."
+                val a="Enter valid Ahaar number.."
+                activityRegistrationBinding.txtGenError.text=a
             }
             else -> SnackBarClass().snackShow(activityRegistrationBinding.btnRegister,"No Internet Connection..")
         }
-
     }
-
 
     /**
      *  Sending mail with using smtp...
@@ -186,28 +184,33 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
         val password="Nothing2586"
         val props = Properties()
         props["mail.smtp.host"] = "smtp.gmail.com"
-        props["mail.smtp.socketFactory.port"] = "465"
+        props["mail.smtp.socketFactory.port"] = "587"
         props["mail.smtp.socketFactory.class"] = "javax.net.ssl.SSLSocketFactory"
         props["mail.smtp.auth"] = "true"
-        props["mail.smtp.port"] = "465"
+        props["mail.smtp.port"] = "587"
 
         val session = Session.getInstance(props, object : javax.mail.Authenticator() {
             override fun getPasswordAuthentication(): javax.mail.PasswordAuthentication {
                 return PasswordAuthentication(userEmail, password)
             }
         })
-        progressDailouge=ProgressDialog.show(this,"","Sendin Message...",true)
+        progressDailouge=ProgressDialog.show(this,"","Sending Message...",true)
        val mailAsynk= MailAsynk(session, progressDailouge, this, activityRegistrationBinding.etxtEmail.text.trim().toString())
         mailAsynk.execute()
     }
 
+    /**
+     *  This method for getting network state...
+     */
     private fun isNetworkCheck():Boolean{
         val connectivityManager:ConnectivityManager= getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo = connectivityManager.activeNetworkInfo
         return activeNetworkInfo!=null && activeNetworkInfo.isConnected
     }
 
-
+    /**
+     *  This class for sending mail through smt protocal....
+     */
      class MailAsynk(private var session: Session, private var prog: ProgressDialog, @SuppressLint("StaticFieldLeak") val context: Context, var toEmailAddress: String) : AsyncTask<String, Void, String>() {
 
         override fun doInBackground(vararg params: String): String? {
